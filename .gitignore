@@ -3,3 +3,5 @@ quarantine_movie_selector/build/
 quarantine_movie_selector/dist/
 quarantine_movie_selector/main.spec
 .vscode/
+database_gontz.json
+database_patri.json
