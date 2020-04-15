@@ -78,7 +78,7 @@ def show_database(user, disp_width=79):
     else:
         print("Movie list:\n")
         for movie in database["available"]:
-            print(movie.title())
+            print(f"- {movie.title()}")
         film_count = len(database["available"])
         print(f"\nNº of films: {film_count}")
     input("\nPress ENTER key to continue.")
@@ -103,19 +103,19 @@ def add_movie(user, disp_width=79):
         database = {"available": [movie], "removed": []}
         with open(filename, "w") as f:
             json.dump(database, f)
-        print(f"\nMovie {movie.title()} added succesfully.")
+        print(f"\nMovie {repr(movie.title())} added succesfully.")
     else:
         if movie not in database["available"] and movie not in database["removed"]:
             database["available"].append(movie)
             database["available"].sort()
             with open(filename, "w") as f:
                 json.dump(database, f)
-            print(f"\nMovie {movie.title()} added succesfully.")
+            print(f"\nMovie {repr(movie.title())} added succesfully.")
         else:
             if movie in database["available"]:
-                print("\nThis movie is already in your database.")
+                print(f"\nThe movie {repr(movie.title())} is already in your database.")
             if movie in database["removed"]:
-                print("\nThis movie has already been watched or removed previously.")
+                print(f"\nThe movie {repr(movie.title())} has already been watched or removed previously.")
     input("\nPress ENTER key to continue.")
 
 
@@ -149,9 +149,9 @@ def remove_movie(user, disp_width=79):
         movie = movie.lower()
         if movie in database["available"]:
             rm_movie(movie, database, filename)
-            print(f"\nMovie {movie.title()} removed succesfully.")
+            print(f"\nMovie {repr(movie.title())} removed succesfully.")
         else:
-            print(f"\nThe movie {movie.title()} is not in your database.")
+            print(f"\nThe movie {repr(movie.title())} is not in your database.")
     input("\nPress ENTER key to continue.")
 
 
@@ -174,7 +174,7 @@ def select_movie(user, disp_width=79):
     else:
         if database["available"]:
             selection = choice(database["available"])
-            print(f"The selected movie is: {selection.title()}")
+            print(f"The selected movie is: {repr(selection.title())}")
             print("\nAre you going to watch it? (y/n): ")
             while True:
                 answer = input()
