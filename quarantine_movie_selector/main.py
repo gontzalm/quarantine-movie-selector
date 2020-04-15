@@ -1,6 +1,6 @@
 import functions as fn
 
-users_dict = {"1": "USER1", "2": "USER2"}
+users_dict = {"1": "USER_1", "2": "USER_2"}
 
 while True:
     opt = fn.user_menu(users_dict)
