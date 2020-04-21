@@ -1,11 +1,15 @@
 import os
+import platform
 import json
 from random import choice
 
 def clear():
-    """Clear terminal on Windows system."""
-    os.system("cls")
-
+    """Clear terminal."""
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
+        
 
 def show_header(disp_width=79):
     """Show the program header."""
